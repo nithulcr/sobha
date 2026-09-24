@@ -924,7 +924,7 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .features-row h5{
-    color: #00d2ff;
+    color: #2b9db6;
     padding-bottom: 5px;
 }
 
@@ -1256,9 +1256,12 @@ transform: translateY(-5px);
 }
 .three-world-card img{
     display: block;
-    width: 100px;
+    width: 80px;
 
     object-fit: cover;
+}
+.three-world-card p{
+    font-size: 15px;
 }
 .three-world-card h4{
     font-size: 20px;
