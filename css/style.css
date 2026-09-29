@@ -587,6 +587,8 @@ align-items: center;
 .about-feature p span{
    display: block; color: gray;
     font-size: 12px;
+    line-height: 1;
+    margin-bottom: 4px;
 }
 
 .about-right-text {
@@ -1262,11 +1264,7 @@ line-height: 1;
     padding: 100px 50px;
     background: #f3f3f3;
 }
-.three-world-content{
-    position: sticky;
-    top: 120px;
-    height: fit-content;
-}
+
 .three-world-card{
 
 margin-top: 20px;
@@ -1761,6 +1759,7 @@ label {
 .why-invest .card{
    
     align-items: center;
+    padding: 14px 0;
 
 
 }
@@ -1827,6 +1826,13 @@ grid-column: span 4;
 
 
 
+@media(min-width: 1200px) {
+.three-world-content{
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+}
+}
 @media(min-width: 520px) {
 
 
@@ -1857,21 +1863,55 @@ grid-column: span 4;
 }
 
 @media(max-width: 1200px) {
+.three-world .grid-3 {
+ display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
 
 
+.three-world .grid-3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 
-    .about-right {
-        padding: 100px 50px;
-    }
+.three-world .grid-3 img:nth-child(3) {
+   grid-column: span 2;
+}
+.about .col-lg-4.p-0{
+    max-width: 50%;
+}
+.about-center{
+    order: 0;
+}
+.about-right {
 
+    padding-right: 40px;
+}
+.about-heading span {
+    font-size: 28px;
 
+}
+.about .col-lg-4:nth-child(1){
+    order: 1;
+}
+.about .col-lg-4:nth-child(2){
+    order: 2;
+}
+.about-center{
+    order: 0;
+}
 
 }
 
 @media(max-width: 1080px) {
     .connectivity {
         flex-direction: column;
+    }
+    .location{
+        max-width: 100%;
     }
 .overview-content-heading{
     color: white;
@@ -2100,6 +2140,10 @@ grid-column: span 4;
 }
 
 @media(max-width: 768px) {
+    .three-world .grid-3{
+        margin-top: 40px;
+        padding-left: 0;
+    }
     .about-right p {
 
         font-size: 14px !important;
@@ -2109,16 +2153,13 @@ grid-column: span 4;
         grid-template-columns: 1fr;
     }
 
-
-
-    .investment-grid {
-        background-color: white;
-        border-radius: 16px;
-        overflow: hidden;
-        margin: 0;
-        gap: 0;
-    }
-
+.why-invest::before{
+  display: none;
+    
+}
+.investment-grid{
+    gap: 20px;
+}
     .features-column:nth-child(2) {
         border: none;
         border-bottom: 2px solid #00575b1f;
@@ -2219,11 +2260,6 @@ grid-column: span 4;
 
 
 
-    .about-right {
-
-        padding: 50px 40px;
-    }
-
     .sub-page {
         padding: 80px 40px;
     }
@@ -2257,6 +2293,9 @@ grid-column: span 4;
    .about-right {
         padding: 0;
     }
+.col-lg-4.p-0{
+    max-width: 100%;
+}
 
     .third-footer {
         text-align: left;
@@ -2310,7 +2349,23 @@ grid-column: span 4;
         transform: translateX(-50%);
 
     }
+    .plan-cards.plan-cards2 {
 
+    flex-direction: column;
+
+}
+    .plan-cards>*:not(:last-child) {
+
+        padding: 0 !important;
+        border: none !important;
+    }
+    .plan-card .plan-value{
+        text-align: left;
+    }
+        .plan-card {
+
+        width: stretch;
+    }
 }
 
 @media(max-width: 520px) {
@@ -2384,14 +2439,14 @@ grid-column: span 4;
         justify-content: flex-start;
     }
 
-    .about-right,
+
     .payment,
     .properties,
     .services-start,
     .about,
     .ameninties,
     .why-invest,
-    .policy {
+    .policy, .three-world, .cta {
 
         padding: 50px 20px;
     }
@@ -2403,7 +2458,10 @@ grid-column: span 4;
     .overview-section {
         padding-top: 50px;
     }
-
+.three-world-card p {
+    font-size: 12px;
+    line-height: 1.4!important;
+}
 
     .sub-page {
         padding: 80px 20px;
@@ -2654,5 +2712,12 @@ grid-column: span 4;
     .about-heading{
     font-size: 28px;
 }
+.location-features{
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 
+}
+.location-header h5{
+    font-size: 14px;
+}
 }
