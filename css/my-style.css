@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 :root{
-    --main-color:#111;
+    --main-color:#091422;
     --main-color3:#12263f;
 
     --main-color2:#00d2ff;
@@ -65,7 +65,7 @@ section#map {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--main-color);
+    background: var(--main-color3);
 }
 .overflow-hidden{
     overflow: hidden;
@@ -134,8 +134,8 @@ a {
 .heading {
     padding-bottom: 10px;
     width: fit-content;
-    font-size: 45px;
-    line-height: 54px;
+    font-size:60px;
+    line-height: 75px;
     position: relative;
     /* font-family: "Roboto", sans-serif; */
 
