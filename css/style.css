@@ -961,7 +961,7 @@ border-radius: 20px;
 
 
 .features-row {
-    align-items: center;
+    /* align-items: center; */
     display: grid !important;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -1043,7 +1043,6 @@ text-align: center;
 
 .features-column {
     padding: 25px 15px;
-    min-height: 115px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1495,7 +1494,7 @@ transform: translateY(-5px);
     align-items: center;
     gap: 15px;
     /* justify-content: center; */
-    padding: 10px 0;
+    padding-top: 10px;
     flex-wrap: wrap;
     width: 100%;
 }
@@ -2160,7 +2159,7 @@ grid-column: span 4;
     }
 
     .features2 h5 {
-        font-size: 18px;
+        font-size: 25px;
     }
 
 
@@ -2202,6 +2201,7 @@ grid-column: span 4;
     .three-world .grid-3{
         margin-top: 40px;
         padding-left: 0;
+        gap: 10px;
     }
     .about-right p {
 
@@ -2221,17 +2221,14 @@ grid-column: span 4;
 }
     .features-column:nth-child(2) {
         border: none;
-        border-bottom: 2px solid #00575b1f;
-        min-height: 122px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
     }
 
-    .features-column {
 
-        min-height: 122px;
-    }
 
     .features-column:nth-child(1) {
-        border-bottom: 2px solid #00575b1f;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
 
@@ -2353,17 +2350,23 @@ grid-column: span 4;
         padding-right: 20px;
     }
 
-    .plan-card .plan-value {
-        font-size: 26px;
-        line-height: 30px;
-    }
 
 
 }
 
 @media(max-width: 580px) {
+.plan-card-bottom {
 
+    margin: auto;
+    flex-direction: column;
+}
+    .plan-card {
 
+        align-items: center;
+    }
+.plan-cards2 .plan-desc.plan-desc2{
+    text-align: center;
+}
     .footer-column:first-child {
         border-right: none !important;
     }
@@ -2374,12 +2377,7 @@ grid-column: span 4;
         padding: 50px 20px;
     }
 
-    .payment,
-    .newste-icon,
-    .ameninties {
-        padding-top: 20px !important;
 
-    }
 
     .newste-icon .container {
         padding: 0;
@@ -2409,7 +2407,7 @@ grid-column: span 4;
         border: none !important;
     }
     .plan-card .plan-value{
-        text-align: left;
+        text-align: center;
     }
         .plan-card {
 
@@ -2617,8 +2615,8 @@ grid-column: span 4;
 
 @media (max-width: 480px) {
     .features .features-column {
-        min-height: 125px;
         padding: 15px;
+
     }
 
     .half {
@@ -2627,10 +2625,7 @@ grid-column: span 4;
         margin-bottom: 0;
     }
 
-    .features .features-column {
-        flex-direction: column;
-        gap: 5px;
-    }
+
 
     .logo-footer-column {
         width: 100%;
@@ -2654,6 +2649,9 @@ grid-column: span 4;
     .home .swiper-slide img.mob {
         display: block;
     }
+    .about .col-lg-4{
+        max-width: 100%!important;
+    }
 
 }
 
@@ -2670,6 +2668,7 @@ grid-column: span 4;
 
     .features2 h6 {
         font-size: 13px;
+        line-height: 18px;
     }
 
     .newst-city-col h5 {
@@ -2677,9 +2676,6 @@ grid-column: span 4;
         font-size: 14px;
     }
 
-    .features .features-column {
-        padding: 12px;
-    }
 
     .property-card {
         padding: 0px;

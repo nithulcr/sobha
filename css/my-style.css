@@ -431,10 +431,10 @@ a {
 @media (max-width: 580px) {
     
 
-    .heading {
+    .heading, .properties-head .heading {
 
-        font-size: 27px;
-        line-height: 30px;
+        font-size: 38px!important;
+        line-height: 44px!important;
 
     }
 .heading2 {
