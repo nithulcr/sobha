@@ -8,7 +8,8 @@
     />
 
     <title>
-     Register Your Interest | Sobha City Abu Dhabi Near Yas Island | Luxury Residences
+      Register Your Interest | Sobha City Abu Dhabi Near Yas Island | Luxury
+      Residences
     </title>
     <meta
       name="description"
@@ -464,14 +465,10 @@
               <input
                 type="hidden"
                 name="access_key"
-                value="3452a5a8-f6d0-485a-a6a0-08051c0856c1"
+                value="bc73c3f6-70e2-492c-a3af-5616de24f9e1"
               />
 
-              <input
-    type="checkbox"
-    name="botcheck"
-    style="display: none;"
->
+              <input type="checkbox" name="botcheck" style="display: none" />
 
               <!-- Email Subject -->
               <input
@@ -487,12 +484,7 @@
                 value="Sobha City Abu Dhabi Website"
               />
 
-              <!-- Redirect after successful submission -->
-              <input
-                type="hidden"
-                name="redirect"
-                value="https://sobharesidencesrak.com/thank-you.html"
-              />
+    
 
               <!-- =========================
          FORM FIELDS
@@ -569,11 +561,17 @@
                         3 Bedroom + Majlis Garden Villas
                       </option>
 
-                      <option value="4 Bedroom + Majlis Garden Villas">4 Bedroom + Majlis Garden Villas</option>
+                      <option value="4 Bedroom + Majlis Garden Villas">
+                        4 Bedroom + Majlis Garden Villas
+                      </option>
 
-                      <option value="5 Bed ESTATE Villas">5 Bed ESTATE Villas</option>
+                      <option value="5 Bed ESTATE Villas">
+                        5 Bed ESTATE Villas
+                      </option>
 
-                      <option value="6 Bed ESTATE Villas">6 Bed ESTATE Villas</option>
+                      <option value="6 Bed ESTATE Villas">
+                        6 Bed ESTATE Villas
+                      </option>
                     </select>
                   </div>
 
@@ -624,9 +622,12 @@
                       <option value="AED 8.07 Million">AED 8.07 Million</option>
 
                       <option value="AED 9.05 Million">AED 9.05 Million</option>
-                      <option value="AED 11.16 Million">AED 11.16 Million</option>
-                      <option value="AED 13.40 Million">AED 13.40 Million</option>
-
+                      <option value="AED 11.16 Million">
+                        AED 11.16 Million
+                      </option>
+                      <option value="AED 13.40 Million">
+                        AED 13.40 Million
+                      </option>
 
                       <option value="Upon Request">Upon Request</option>
                     </select>
@@ -648,7 +649,7 @@
                       name="Disclaimer Accepted"
                       value="Yes"
                       required
-                      style="width: 20px; height: 20px; accent-color: #00575b"
+                      style="width: 20px; height: 20px; accent-color: #091422"
                     />
 
                     <label for="disclaimer">
@@ -684,30 +685,69 @@
       }
       requestAnimationFrame(raf);
     </script>
-   <script>
-const phoneInputField = document.querySelector("#phone");
+  <script>
+  const phoneInputField = document.querySelector("#phone");
 
-const iti = window.intlTelInput(phoneInputField, {
+  const iti = window.intlTelInput(phoneInputField, {
     initialCountry: "ae",
     preferredCountries: ["ae", "in", "us", "gb"],
     utilsScript:
-        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-});
+      "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+  });
 
-const form = document.querySelector("#registerForm");
+  const form = document.querySelector("#registerForm");
 
-form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
+    // Check phone number
     if (!iti.isValidNumber()) {
-        e.preventDefault();
-
-        alert("Please enter a valid phone number.");
-
-        phoneInputField.focus();
-        return;
+      alert("Please enter a valid phone number.");
+      phoneInputField.focus();
+      return;
     }
 
-});
+    const submitButton = form.querySelector("button[type='submit']");
+    const submitLabel = submitButton.querySelector("label");
+
+    // Prevent double submission
+    submitButton.disabled = true;
+    submitLabel.textContent = "Submitting...";
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Redirect to your own thank-you page
+        window.location.href =
+          "https://sobharesidencesrak.com/thank-you.html";
+      } else {
+        throw new Error(
+          result.message || "Form submission failed."
+        );
+      }
+
+    } catch (error) {
+      console.error("Web3Forms Error:", error);
+
+      alert(
+        "Something went wrong while submitting the form. Please try again."
+      );
+
+      submitButton.disabled = false;
+      submitLabel.textContent = "Register";
+    }
+  });
 </script>
   </body>
 </html>
