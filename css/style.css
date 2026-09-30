@@ -149,6 +149,9 @@ header {
     z-index: 9;
     white-space: nowrap;
     font-size: 17px !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 
 
 }
@@ -159,8 +162,8 @@ header {
 }
 
 .button-site img {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     object-fit: contain;
     z-index: 9;
     transition: .3s;
@@ -1120,10 +1123,6 @@ text-align: center;
     grid-column: span 2;
 }
 
-/* Bottom large image */
-.renders-living {
-    grid-column: span 2;
-}
 
 
 
