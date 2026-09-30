@@ -636,13 +636,33 @@ align-items: center;
 .about-right h4.no-underline:before {
     display: none;
 }
+.mob-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: var(--main-color3);
+    width: 100%;
+    padding: 10px 15px;
+    z-index: 99;
+    display: none;
+    box-shadow: 0 0 2px 2px #ffffff0a;
 
-
+}
+.mob-footer a{
+    text-transform: uppercase;
+    font-size: 18px;
+}
+.mob-footer a img{
+    width: 25px;
+    height: 25px;
+}
 .sticky-book-btn {
+
     position: fixed;
     right: -65px;
     top: 50%;
     transform: translateY(-50%) rotate(-90deg);
+    box-shadow: 0 0 2px 2px #ffffff0a;
 
     z-index: 9999;
 
@@ -1812,7 +1832,11 @@ label {
 
 }
 .why-invest .heading{
-    font-size: 55px;
+    font-size: 50px;
+    line-height: 1.1em;
+}
+.why-invest p{
+    font-size: 14px;
 }
 .why-invest .card{
    
@@ -1839,18 +1863,18 @@ label {
 
 .investment-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     gap: 50px;
 align-items: center;
     overflow: hidden;
 }
 
 .why-invest-content{
-grid-column: span 3;
+grid-column: span 4;
 text-align: left;
 }
 .why-invest-card{
-grid-column: span 4;
+grid-column: span 5;
 }
 
 .card {
@@ -2350,8 +2374,26 @@ grid-column: span 4;
         padding-right: 20px;
     }
 
+.mob-footer{
+display: block;
 
-
+}
+.sticky-book-btn{
+    display: none;
+}
+.fixed-contact{
+    bottom: 80px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+}
+.fixed-contact img{
+    width: 50px;
+    height: 50px;
+}
+.footer{
+    padding-bottom: 80px;
+}
 }
 
 @media(max-width: 580px) {
@@ -2635,13 +2677,18 @@ grid-column: span 4;
 
 
     .newst-city-col {
-        padding: 12px;
         font-size: 13px;
         line-height: 20px;
 
     }
+.newst-city-col img {
+    width: 80px;
+}
+.card h3 {
+    font-size: 16px;
+    line-height: 20px;
 
-
+}
     .home .swiper-slide img.desk {
         display: none;
     }
@@ -2652,7 +2699,9 @@ grid-column: span 4;
     .about .col-lg-4{
         max-width: 100%!important;
     }
-
+.property-card-head h5{
+    font-size: 16px;
+}
 }
 
 
