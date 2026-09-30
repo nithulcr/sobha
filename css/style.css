@@ -1904,7 +1904,12 @@ grid-column: span 5;
     color: #424242;
     font-size: 14px;
 }
-
+.contact-number {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 5px;
+}
 
 
 
@@ -2233,16 +2238,18 @@ grid-column: span 5;
     }
 
     .investment-grid {
-        grid-template-columns: 1fr;
+       display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: start;
     }
+    
 
 .why-invest::before{
   display: none;
     
 }
-.investment-grid{
-    gap: 20px;
-}
+
     .features-column:nth-child(2) {
         border: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -2801,14 +2808,21 @@ display: block;
         font-size: 14px !important;
     }
     .about-heading{
-    font-size: 28px;
+    font-size:36px;
 }
+    .about-heading span {
+        font-size: 20px;
+    }
 .location-features{
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 
 }
 .location-header h5{
+    font-size: 14px;
+}
+.amenities-col h5 {
+
     font-size: 14px;
 }
 }
