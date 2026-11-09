@@ -191,6 +191,7 @@
               src="images/logo1-white.png"
               class="site-logo-white"
               alt="Sobha Logo"
+              fetchpriority="high"
             />
           </div>
         </div>
@@ -211,6 +212,7 @@
               src="images/logo1-white.png"
               class="site-logo-white"
               alt="Sobha Logo"
+              fetchpriority="high"
             />
           </div>
           <div class="nav-buttons">
@@ -245,11 +247,11 @@
                   alt="Al Marjan Island"
                   style="object-position: right"
                 />
-                <img
+                <!-- <img
                   src="images/hero/hero1.webp"
                   class="mob"
                   alt="Al Marjan Island"
-                />
+                /> -->
               </div>
               <div class="carousel-caption left-text">
                 <div class="carousel-text">
@@ -311,7 +313,7 @@
                   src="images/hero/hero2.webp"
                   class="position1 desk"
                   alt="Al Marjan Island"
-                  style="object-position: left"
+                  style="object-position: right"
                 />
                 <img
                   src="images/hero/hero2.webp"
@@ -468,48 +470,32 @@
           <div class="swiper-pagination"></div>
         </div>
       </section>
+
+      <!-- Mobile hero video -->
       <section class="home home-video">
         <video
+          id="heroVideo"
+          data-mobile="images/video-mobile.mp4"
           width="1400"
           height="700"
           autoplay
           muted
           loop
           playsinline
-          webkit-playsinline
-          class="vide-desk"
-        >
-          <source src="images/video.mp4" type="video/mp4" />
-
-          Your browser does not support the video tag.
-        </video>
-        <video
-          class="vide-mob"
-          autoplay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          poster="images/hero/hero1.webp"
-        >
-          <source src="images/video-mobile.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        <style>
-          .vide-mob {
-            display: none !important;
-          }
-          @media (max-width: 990px) {
-            .vide-mob {
-              display: flex !important;
-            }
-            .vide-desk {
-              display: none !important;
-            }
-          }
-        </style>
+          preload="none"
+         
+        ></video>
       </section>
+
+      <style>
+        #heroVideo {
+          display: block;
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+        }
+      </style>
+
 
       <section class="features2 features">
         <div class="container">
@@ -561,8 +547,8 @@
             >
               <img src="images/handover.png" width="35" />
               <div>
-                <h5 class="">2 KM</h5>
-                <h6 class="mt-3">Waterfront Promenade</h6>
+                <h5 class="">38 M Sq ft.</h5>
+                <h6 class="mt-3">Master Community</h6>
               </div>
             </div>
             <!-- <div class="features-column" data-aos="fade-up" data-aos-delay="200">
@@ -579,15 +565,15 @@
       <section id="about" class="about about2">
         <div class="container">
           <div class="row m-0" style="row-gap: 40px">
-            <div class="col-lg-4 p-0">
+            <div class="col-12 col-lg-6 p-0">
               <div class="about-right" data-aos="fade-up" data-aos-delay="50">
                 <h6 class="about-heading chronicle">
-                  Welcome to Sobha City Abu Dhabi
+                  Welcome to Sobha City, Abu Dhabi
 
                   <span
                     class="chronicle2"
                     style="padding-top: 10px; display: block"
-                    >The First Ever Master Community in Abu Dhabi by Sobha
+                    >The First Ever Master Community in <span style="display: inline-block;">Abu Dhabi</span> by Sobha
                     Reality.</span
                   >
                 </h6>
@@ -613,7 +599,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 p-0">
+            <div class="col-12 col-lg-6 p-0">
               <div class="about-right">
                 <div
                   class="about-right-text"
@@ -651,62 +637,78 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 about-center">
+            <!-- <div class="col-12 col-lg-4 about-center">
               <img
-                src="images/about.jpg"
+                src="images/about.webp"
                 data-aos="zoom-in"
                 alt="Abu Dhabi Near Yas Island"
               />
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
-      <section class="home second-video">
+      <!-- Desktop video in the 4th section -->
+      <section class="second-video">
         <video
+          id="desktopVideo"
+          data-desktop="images/video.mp4"
           width="1400"
           height="700"
           autoplay
           muted
           loop
           playsinline
-          webkit-playsinline
-          class="vide-desk"
-        >
-          <source src="images/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <video
-          class="vide-mob"
-          autoplay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          preload="auto"
-          poster="images/hero/hero1.webp"
-        >
-          <source src="images/video-mobile.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        <style>
-          .vide-mob {
-            display: none !important;
-          }
-          @media (max-width: 990px) {
-            .vide-mob {
-              display: flex !important;
-            }
-            .vide-desk {
-              display: none !important;
-            }
-          }
-        </style>
+          preload="none"
+        ></video>
       </section>
+
+      <script>
+        (() => {
+          const mobileQuery = window.matchMedia("(max-width: 990px)");
+
+          const mobileVideo = document.getElementById("heroVideo");
+          const desktopVideo = document.getElementById("desktopVideo");
+
+          function updateVideos() {
+            const isMobile = mobileQuery.matches;
+
+            function configureVideo(video, shouldLoad, source) {
+              if (!video) return;
+
+              if (!shouldLoad) {
+                video.pause();
+                video.removeAttribute("src");
+                video.load();
+                delete video.dataset.activeVideo;
+                return;
+              }
+
+              if (video.dataset.activeVideo === source) return;
+
+              video.src = source;
+              video.dataset.activeVideo = source;
+              video.load();
+
+              video.play().catch(() => {});
+            }
+
+            configureVideo(mobileVideo, isMobile, mobileVideo.dataset.mobile);
+
+            configureVideo(
+              desktopVideo,
+              !isMobile,
+              desktopVideo.dataset.desktop,
+            );
+          }
+
+          updateVideos();
+          mobileQuery.addEventListener("change", updateVideos);
+        })();
+      </script>
       <section id="three-world" class="three-world">
         <div class="container">
           <div class="row">
-            <div class="col-12 col-md-6 three-world-content">
+            <div class="col-12 col-lg-6 three-world-content">
               <span
                 class="chronicle2 text-22"
                 style="display: block"
@@ -743,7 +745,7 @@
                   <div class="content">
                     <h4>The Terraces</h4>
                     <p>
-                      TownhoUSD  Living - Community Focused Spaces - Contemporary
+                      Townhouse Living - Community Focused Spaces - Contemporary
                       Life Style
                     </p>
                   </div>
@@ -763,12 +765,12 @@
                 </div>
               </div>
             </div>
-            <div class="grid-3 m-0 col-12 col-md-6">
-              <img src="images/river-cove.jpg" />
+            <div class="grid-3 m-0 col-12 col-lg-6">
+              <img src="images/river-cove.webp" />
 
-              <img src="images/terraces.jpg" />
+              <img src="images/terraces.webp" />
 
-              <img src="images/orchard.jpg" />
+              <img src="images/orchard.webp" />
             </div>
           </div>
         </div>
@@ -789,54 +791,53 @@
           </div>
           <div class="amenities-row" data-aos="fade-up" data-aos-delay="150">
             <div class="amenities-col">
-              <img src="images/amenities/forest-trail.png" alt="Amenities" />
+              <img src="images/amenities/forest-trail.webp" alt="Amenities" />
               <h5>Forest Trail</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/golf-course.jpg" alt="Amenities" />
+              <img src="images/amenities/golf-course.webp" alt="Amenities" />
               <h5>18 holes Golf Course</h5>
             </div>
             <div class="amenities-col">
               <img
-                src="images/amenities/nature-playground.jpg"
-                alt="Amenities"
+                src="images/amenities/nature-playground.webp" alt="Amenities"
               />
               <h5>Nature Playground</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/pet-garden.jpg" alt="Amenities" />
+              <img src="images/amenities/pet-garden.webp" alt="Amenities" />
               <h5>Pet Garden</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/yoga-deck.png" alt="Amenities" />
+              <img src="images/amenities/yoga-deck.webp" alt="Amenities" />
               <h5>Yoga Deck</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/promenade.jpg" alt="Amenities" />
+              <img src="images/amenities/promenade.webp" alt="Amenities" />
               <h5>Waterfront Promenade</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/pool.png" alt="Amenities" />
+              <img src="images/amenities/pool.webp" alt="Amenities" />
               <h5>Pool</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/restaurant.jpg" alt="Amenities" />
+              <img src="images/amenities/restaurant.webp" alt="Amenities" />
               <h5>Restaurant</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/boardwalk.jpg" alt="Amenities" />
+              <img src="images/amenities/boardwalk.webp" alt="Amenities" />
               <h5>Board Walk</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/courtyard.jpg" alt="Amenities" />
+              <img src="images/amenities/courtyard.webp" alt="Amenities" />
               <h5>Arrival Courtyard</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/lagoon.jpg" alt="Amenities" />
+              <img src="images/amenities/lagoon.webp" alt="Amenities" />
               <h5>Lagoon Beach</h5>
             </div>
             <div class="amenities-col">
-              <img src="images/amenities/gym.jpg" alt="Amenities" />
+              <img src="images/amenities/gym.webp" alt="Amenities" />
               <h5>Gym</h5>
             </div>
           </div>
@@ -851,7 +852,7 @@
               <li>Family Parks</li>
               <li>Landscaped Parks</li>
               <li>Cycling Trails</li>
-              <li>TownhoUSD  Retail Street</li>
+              <li>Townhouse Retail Street</li>
               <li>60% Open & Green Spaces</li>
               <li>20 KM Wellness Loop</li>
             </ul>
@@ -887,36 +888,36 @@
           <div class="renders-row" data-aos="fade-up" data-aos-delay="150">
             <!-- Large: 2 columns -->
             <div class="renders-col renders-marina">
-              <img src="images/about.jpg" alt="Marina" />
+              <img src="images/about.webp" alt="Marina" />
             </div>
 
             <!-- Normal: 1 column -->
             <div class="renders-col">
-              <img src="images/renders/4.jpg" alt="Estate Villa" />
+              <img src="images/renders/4.webp" alt="Estate Villa" />
             </div>
 
             <div class="renders-col">
-              <img src="images/renders/5.jpg" alt="Garden Villa" />
+              <img src="images/renders/5.webp" alt="Garden Villa" />
             </div>
 
             <div class="renders-col">
-              <img src="images/renders/2.jpg" alt="Villa Front" />
+              <img src="images/renders/2.webp" alt="Villa Front" />
             </div>
 
             <div class="renders-col">
-              <img src="images/orchard1.jpg" alt="Bedroom Suite" />
+              <img src="images/orchard1.webp" alt="Bedroom Suite" />
             </div>
 
             <!-- Large: 3 columns -->
             <div class="renders-col">
-              <img src="images/river-cove.jpg" alt="Living Hall" />
+              <img src="images/river-cove.webp" alt="Living Hall" />
             </div>
 
             <div class="renders-col">
-              <img src="images/renders/3.jpg" alt="River Cove" />
+              <img src="images/renders/3.webp" alt="River Cove" />
             </div>
             <div class="renders-col">
-              <img src="images/renders/6.jpg" alt="River Cove" />
+              <img src="images/renders/6.webp" alt="River Cove" />
             </div>
           </div>
         </div>
@@ -1002,7 +1003,7 @@
                 <div class="property-card">
                   <div class="property-card-top">
                     <img
-                      src="images/property/1bedroom.jpg"
+                      src="images/property/1bedroom.webp"
                       alt="Abu Dhabi Near Yas Island"
                       style="width: 100%; height: auto"
                     />
@@ -1017,7 +1018,7 @@
                     <h6>566 - 609 sq. ft</h6>
                   </div>
                   <h4>
-                    AED 1.5 Million<span style="padding: 0 6px">|</span>USD  468
+                    AED 1.5 Million<span style="padding: 0 6px">|</span>USD 468
                     K
                   </h4>
                   <a
@@ -1032,7 +1033,7 @@
                 <div class="property-card">
                   <div class="property-card-top">
                     <img
-                      src="images/property/2bedroom.jpg"
+                      src="images/property/2bedroom.webp"
                       alt="Abu Dhabi Near Yas Island"
                       style="width: 100%; height: auto"
                     />
@@ -1047,7 +1048,7 @@
                     <h6>1013 - 1212 sq. ft</h6>
                   </div>
                   <h4>
-                    AED 2.5 M<span style="padding: 0 6px">|</span>USD  681 K
+                    AED 2.5 M<span style="padding: 0 6px">|</span>USD 681 K
                   </h4>
                   <a
                     href="/booking-enquiry.html"
@@ -1062,7 +1063,7 @@
                 <div class="property-card">
                   <div class="property-card-top">
                     <img
-                      src="images/property/3bedroom.jpg"
+                      src="images/property/3bedroom.webp"
                       alt="Abu Dhabi Near Yas Island"
                       style="width: 100%; height: auto"
                     />
@@ -1091,7 +1092,7 @@
                 <div class="property-card">
                   <div class="property-card-top">
                     <img
-                      src="images/property/4bedroom.jpg"
+                      src="images/property/4bedroom.webp"
                       alt="Abu Dhabi Near Yas Island"
                       style="width: 100%; height: auto"
                     />
@@ -1120,7 +1121,7 @@
                 <div class="property-card">
                   <div class="property-card-top">
                     <img
-                      src="images/property/4bedroom2.png"
+                      src="images/property/4bedroom2.webp"
                       alt="Abu Dhabi Near Yas Island"
                       style="width: 100%; height: auto"
                     />
@@ -1149,7 +1150,7 @@
                 <div class="property-card">
                   <div class="property-card-top">
                     <img
-                      src="images/property/5bedroom.jpg"
+                      src="images/property/5bedroom.webp"
                       alt="Abu Dhabi Near Yas Island"
                       style="width: 100%; height: auto"
                     />
@@ -1178,7 +1179,7 @@
                 <div class="property-card">
                   <div class="property-card-top">
                     <img
-                      src="images/property/6bedroom.png"
+                      src="images/property/6bedroom.webp"
                       alt="Abu Dhabi Near Yas Island"
                       style="width: 100%; height: auto"
                     />
@@ -1360,7 +1361,7 @@
             </div>
             <div class="connectivity-img">
               <img
-                src="images/map.png"
+                src="images/map.webp"
                 data-aos="fade-up"
                 data-aos-delay="50"
               />
@@ -1455,6 +1456,7 @@
               <img
                 src="images/logo-white.png"
                 alt="Sobha City,  Near Yas Island, Abu Dhabi"
+                fetchpriority="high"
               />
             </div>
           </div>
@@ -1622,28 +1624,46 @@
       });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
     <script>
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-      });
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
+      const desktopOnly = window.matchMedia("(min-width: 798px)");
 
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            e.preventDefault();
-            lenis.scrollTo(target);
+      if (desktopOnly.matches) {
+        const script = document.createElement("script");
+
+        script.src =
+          "https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js";
+
+        script.onload = function () {
+          const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+          });
+
+          function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
           }
-        });
-      });
+
+          requestAnimationFrame(raf);
+
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+              const href = this.getAttribute("href");
+              if (!href || href === "#") return;
+
+              const target = document.querySelector(href);
+
+              if (target) {
+                e.preventDefault();
+                lenis.scrollTo(target);
+              }
+            });
+          });
+        };
+
+        document.head.appendChild(script);
+      }
     </script>
 
     <script>
